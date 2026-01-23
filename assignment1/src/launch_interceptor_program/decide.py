@@ -11,9 +11,9 @@ def decide(inputs: DecisionInput) -> DecisionResult:
     input rader tracking information.
 
     Args:
-        inputs: DecisionInput(points, parameters, lcm, puv)
+        inputs: DecisionInput(POINTS, PARAMETERS, LCM, PUV)
 
     Returns:
-        DecisionResult(launch, cmv, pum, fuv)
+        DecisionResult(LAUNCH, CMV, PUM, FUV)
     """
     raise NotImplementedError("DECIDE logic not implemented yet")
