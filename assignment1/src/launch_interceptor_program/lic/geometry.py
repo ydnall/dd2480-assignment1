@@ -5,6 +5,7 @@ Provides common calculations including areas, distances, etc.
 """
 
 from ..model import Point
+import math
 
 def triangle_area(p1: Point, p2: Point, p3: Point) -> float:
     """
@@ -23,3 +24,34 @@ def triangle_area(p1: Point, p2: Point, p3: Point) -> float:
     area = 0.5 * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))
 
     return area
+
+def distance_between_points(p1: Point, p2: Point):
+    """
+    Calculates the distance between two points.
+
+    Uses the distance formula based on the Pythagorean theorem.
+    
+    """
+    x1, y1 = p1
+    x2, y2 = p2
+
+    distance = math.sqrt((y2-y1)**2 + (x2-x1)**2)
+
+    return distance
+
+def distance_between_point_and_line(p1: Point, start_point: Point, end_point: Point):
+    """
+    Calculate the distance from a point to a line between two points.
+    
+    Uses the area of a parallelogram consisting of vectors from the points divided by the length of the line
+    """
+    
+    x1, y1 = p1
+    x2, y2 = start_point
+    x3, y3 = end_point
+
+    line_distance = distance_between_points(start_point, end_point)
+    parallellogram_area = abs((x3-x2)*(y2-y1)-(x2-x1)*(y3-y2))
+    distance = parallellogram_area / line_distance
+    
+    return distance
