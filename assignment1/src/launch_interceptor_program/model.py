@@ -6,10 +6,6 @@ These types model the DECIDE() inputs and outputs defined in the spec.
 
 from dataclasses import dataclass
 from enum import IntEnum
-from typing import List, Sequence, Tuple
-
-
-Point = Tuple[float, float]
 
 
 class Connector(IntEnum):
@@ -41,20 +37,22 @@ class Parameters:
     RADIUS2: float
     AREA2: float
 
+Point = tuple[float, float]
+Points = list[Point]
 
 @dataclass(frozen=True)
 class DecisionInput:
     """Grouped inputs for a DECIDE() evaluation."""
-    points: Sequence[Point]
-    parameters: Parameters
-    lcm: Sequence[Sequence[Connector]]
-    puv: Sequence[bool]
+    POINTS: Points
+    PARAMETERS: Parameters
+    LCM: list[list[Connector]]
+    PUV: list[bool]
 
 
 @dataclass(frozen=True)
 class DecisionResult:
     """DECIDE() output and intermediate vectors."""
-    launch: bool
-    cmv: List[bool]
-    pum: List[List[bool]]
-    fuv: List[bool]
+    LAUNCH: bool
+    CMV: list[bool]
+    PUM: list[list[bool]]
+    FUV: list[bool]
