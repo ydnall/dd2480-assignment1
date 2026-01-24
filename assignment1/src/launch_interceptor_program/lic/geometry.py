@@ -55,3 +55,32 @@ def distance_between_point_and_line(p1: Point, start_point: Point, end_point: Po
     distance = parallellogram_area / line_distance
     
     return distance
+
+
+def circumcircle_radius(p1: Point, p2: Point, p3: Point, eps=1e-12) -> float:
+    """
+    Compute the radius of the circumcircle of three 2D points.
+
+    Parameters:
+        p1, p2, p3: 3 points
+        eps: tolerance for collinearity
+
+    Returns:
+        Radius of the circumcircle (float)
+        float("inf") if points are collinear
+    """
+
+    # Side lengths
+    a = distance_between_points(p2, p3)
+    b = distance_between_points(p1, p3)
+    c = distance_between_points(p1, p2)
+
+    # Twice the triangle area via cross product
+    area2 = 2 * triangle_area(p1, p2, p3)
+
+    # Collinear check
+    if area2 < eps:
+        return float("inf")
+
+    # Circumradius formula: R = abc / (4 * area)
+    return (a * b * c) / (2 * area2)

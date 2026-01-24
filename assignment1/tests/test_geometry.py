@@ -1,4 +1,4 @@
-from launch_interceptor_program.lic.geometry import triangle_area, distance_between_points, distance_between_point_and_line
+from launch_interceptor_program.lic.geometry import triangle_area, distance_between_points, distance_between_point_and_line, circumcircle_radius
 
 import math
 
@@ -36,3 +36,42 @@ def test_distance_between_point_on_line_and_line():
     """Distance between a point on a line and the line should be 0"""
     result = distance_between_point_and_line((1,1), (3,3), (4,4))
     assert result == 0.0
+
+def test_circumcircle_radius_unit_right_triangle():
+    """
+    Circumcircle of a unit right triangle with vertices
+    (0,0), (1,0), (0,1) has radius sqrt(2)/2
+    """
+    result = circumcircle_radius((0, 0), (1, 0), (0, 1))
+    assert math.isclose(result, math.sqrt(2) / 2)
+
+def test_circumcircle_radius_equilateral_triangle():
+    """
+    Equilateral triangle of side length 2 has circumradius = side / sqrt(3)
+    """
+    result = circumcircle_radius((0, 0), (2, 0), (1, math.sqrt(3)))
+    assert math.isclose(result, 2 / math.sqrt(3))
+
+def test_circumcircle_radius_collinear_points():
+    """
+    Collinear points should return infinite radius
+    """
+    result = circumcircle_radius((0, 0), (1, 1), (2, 2))
+    assert result == float("inf")
+
+def test_circumcircle_radius_isosceles_triangle():
+    """
+    Isosceles triangle with base 2 and height 2
+    """
+    result = circumcircle_radius((0, 0), (2, 0), (1, 2))
+    assert math.isclose(result, 1.25)
+
+def test_circumcircle_radius_permutation_invariance():
+    """
+    Changing the order of points should not change the result
+    """
+    r1 = circumcircle_radius((0, 0), (1, 0), (0, 1))
+    r2 = circumcircle_radius((1, 0), (0, 1), (0, 0))
+    r3 = circumcircle_radius((0, 1), (0, 0), (1, 0))
+    assert math.isclose(r1, r2)
+    assert math.isclose(r2, r3)
