@@ -1,25 +1,35 @@
-"""Tests for LIC 9."""
+"""
+LIC 9: Angle with separated points.
+"""
+import math
+from ..model import Point, Parameters
+from .geometry import angle
 
-
-from launch_interceptor_program.model import Point, Parameters
-
-def make_params(**overrides):
-    """Helper: create Parameters with defaults."""
-    return Parameters(
-        LENGTH1=1.0, RADIUS1=1.0, EPSILON=0.1, AREA1=1.0,
-        Q_PTS=1, QUADS=1, DIST=1.0,
-        N_PTS=1, K_PTS=1, A_PTS=1, B_PTS=1, C_PTS=1, D_PTS=1,
-        E_PTS=1, F_PTS=1, G_PTS=1,
-        LENGTH2=1.0, RADIUS2=1.0, AREA2=1.0,
-        **overrides  # override specific ones
-    )
-
-def test_lic9_false_few_points():
-    points = [(0.0, 0.0)] * 4
-    params = make_params()
-    assert not lic_9(points, params)
-
-def test_lic9_true_angle_too_small():
-    points = [(0,0), (1,0), (1,1), (2,0)]
-    params = make_params(C_PTS=1, D_PTS=1, EPSILON=0.1)
-    assert lic_9(points, params)
+def lic_9(points: list[Point], params: Parameters) -> bool:
+    """LIC 9 implementation."""
+    n = len(points)
+    if n < 5:
+        return False
+    
+    c_pts = params.C_PTS
+    d_pts = params.D_PTS
+    epsilon = params.EPSILON
+    
+    if c_pts < 1 or d_pts < 1 or c_pts + d_pts > n - 3:
+        return False
+    
+    for i in range(n - c_pts - d_pts - 2):
+        j = i + c_pts + 1
+        k = j + d_pts + 1
+        
+        p1, vertex, p3 = points[i], points[j], points[k]
+        
+        if (p1[0] == vertex[0] and p1[1] == vertex[1]) or \
+           (p3[0] == vertex[0] and p3[1] == vertex[1]):
+            continue
+        
+        theta = angle(p1, vertex, p3)
+        if theta < math.pi - epsilon or theta > math.pi + epsilon:
+            return True
+    
+    return False
