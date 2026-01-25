@@ -1,4 +1,5 @@
 from ..model import Parameters, Points
+from .geometry import circumradius
 
 def lic_1(points: Points, parameters: Parameters) -> bool:
     """
@@ -6,8 +7,7 @@ def lic_1(points: Points, parameters: Parameters) -> bool:
     a circle with radius greater than RADIUS1 to enclose them.
     """
     for (p1, p2, p3) in zip(points, points[1:], points[2:]):
-        # TODO: use the Andy function
-        # if circumcircle_radius(p1, p2, p3) > parameters.RADIUS1:
-        #     return True
+        if circumradius(p1, p2, p3) > parameters.RADIUS1:
+            return True
 
     return False
