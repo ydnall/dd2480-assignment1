@@ -1,3 +1,4 @@
+from launch_interceptor_program.lic.geometry import triangle_area, distance, circumradius
 from launch_interceptor_program.lic.geometry import triangle_area, distance
 from launch_interceptor_program.lic.geometry import triangle_area, distance_between_points, distance_between_point_and_line
 
