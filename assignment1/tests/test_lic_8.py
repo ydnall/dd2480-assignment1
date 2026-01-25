@@ -36,7 +36,7 @@ def test_lic_8_circumradius_bigger_than_radius1():
     """
     parameters = make_test_params(1, 2, 2)
     points = [(1, 1), (2, 5), (4, 4), (6, 3), (7, 7), (8, 2)]
-    result = lic_8(parameters, points)
+    result = lic_8(points, parameters)
     assert result == True
 
 
@@ -50,7 +50,7 @@ def test_lic_8_circumradius_smaller_than_radius1():
     """
     parameters = make_test_params(1, 2, 5)
     points = [(1, 1), (2, 5), (4, 4), (6, 3), (7, 7), (8, 2)]
-    result = lic_8(parameters, points)
+    result = lic_8(points, parameters)
     assert result == False
 
 
@@ -62,5 +62,5 @@ def test_lic_8_less_than_5_total_points():
     """
     parameters = make_test_params(1, 2, 3)
     points = [(1, 1), (4, 4), (8, 2)]
-    result = lic_8(parameters, points)
+    result = lic_8(points, parameters)
     assert result == False

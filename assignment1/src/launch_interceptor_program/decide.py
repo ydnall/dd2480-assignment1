@@ -2,7 +2,8 @@
 Top-level DECIDE() entrypoint for the Launch Interceptor Program.
 """
 
-from .model import DecisionInput, DecisionResult
+from .cmv import compute_cmv
+from .model import Connector, DecisionInput, DecisionResult
 
 
 def decide(inputs: DecisionInput) -> DecisionResult:
@@ -16,4 +17,7 @@ def decide(inputs: DecisionInput) -> DecisionResult:
     Returns:
         DecisionResult(LAUNCH, CMV, PUM, FUV)
     """
-    raise NotImplementedError("DECIDE logic not implemented yet")
+    # CMV (Conditions Met Vector)
+    cmv = compute_cmv(inputs.POINTS, inputs.PARAMETERS)
+
+    pass

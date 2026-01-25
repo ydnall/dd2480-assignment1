@@ -2,7 +2,7 @@ from ..model import Parameters, Points
 from .geometry import distance
 
 
-def lic_7(parameters: Parameters, points: Points):
+def lic_7(points: Points, parameters: Parameters):
     NUMPOINTS = len(points)
     K_PTS = parameters.K_PTS
     LENGTH1 = parameters.LENGTH1

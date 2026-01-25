@@ -2,7 +2,7 @@ from ..model import Parameters, Points
 from .geometry import circumradius
 
 
-def lic_8(parameters: Parameters, points: Points):
+def lic_8(points: Points, parameters: Parameters):
     NUMPOINTS = len(points)
     A_PTS = parameters.A_PTS
     B_PTS = parameters.B_PTS

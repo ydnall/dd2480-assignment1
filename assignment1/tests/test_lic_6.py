@@ -34,7 +34,7 @@ def test_lic_6_calculated_distance_greater_than_dist():
     """
     parameters = make_test_params(3, 1)
     points = [(0, 0), (1, 4), (2, 2)]
-    result = lic_6(parameters, points)
+    result = lic_6(points, parameters)
     assert result == True
 
 
@@ -48,7 +48,7 @@ def test_lic_6_calculate_distance_shorter_than_dist():
     """
     parameters = make_test_params(5, 7)
     points = [(0, 0), (2, 2), (3, 3), (4, 4), (0, 0)]
-    result = lic_6(parameters, points)
+    result = lic_6(points, parameters)
     assert result == False
 
 
@@ -60,5 +60,5 @@ def test_lic_6_less_than_3_total_points():
     """
     parameters = make_test_params(3, 1)
     points = [(0, 0), (1, 1)]
-    result = lic_6(parameters, points)
+    result = lic_6(points, parameters)
     assert result == False
