@@ -4,6 +4,7 @@ Geometric helper functions for LIC evaluations.
 Provides common calculations including areas, distances, etc.
 """
 
+from math import sqrt, pow
 from ..model import Point
 import math
 
@@ -25,6 +26,15 @@ def triangle_area(p1: Point, p2: Point, p3: Point) -> float:
 
     return area
 
+def distance(p1: Point, p2: Point) -> float:
+    """Euclidean distance between two points."""
+
+    # unpack coordinates from points
+    x1, y1 = p1
+    x2, y2 = p2
+
+    # apply euclidean distance formula
+    distance = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2))
 def distance_between_points(p1: Point, p2: Point):
     """
     Calculates the distance between two points.
@@ -56,9 +66,6 @@ def distance_between_point_and_line(p1: Point, start_point: Point, end_point: Po
     
     return distance
 
-import math
-from ..model import Point
-
 def angle(p1: Point, vertex: Point, p3: Point) -> float:
     vx1 = p1[0] - vertex[0]
     vy1 = p1[1] - vertex[1]
@@ -74,3 +81,27 @@ def angle(p1: Point, vertex: Point, p3: Point) -> float:
     
     cos_theta = max(-1.0, min(1.0, dot / (norm1 * norm2)))
     return math.acos(cos_theta)
+ 
+def circumradius(p1: Point, p2: Point, p3: Point) -> float:
+    """
+    Radius of the smallest circle that can contain three points.
+
+    For non-collinear points: circumradius of the triangle.
+    For collinear points: half the longest distance.
+    For obtuse and right triangles: half the longest distance.
+    """
+    a = distance(p1, p2)
+    b = distance(p2, p3)
+    c = distance(p1, p3)
+    a, b, c = sorted([a, b, c])
+
+    area = triangle_area(p1, p2, p3)
+    eps = 1e-12
+
+    if area <= eps:
+        return c / 2.0
+
+    if pow(c, 2) >= pow(a, 2) + pow(b, 2):
+        return c / 2.0
+    
+    return (a * b * c) / (4.0 * area)
