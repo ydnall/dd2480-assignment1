@@ -66,6 +66,22 @@ def distance_between_point_and_line(p1: Point, start_point: Point, end_point: Po
     
     return distance
 
+def angle(p1: Point, vertex: Point, p3: Point) -> float:
+    vx1 = p1[0] - vertex[0]
+    vy1 = p1[1] - vertex[1]
+    vx2 = p3[0] - vertex[0]
+    vy2 = p3[1] - vertex[1]
+    
+    dot = vx1 * vx2 + vy1 * vy2
+    norm1 = math.hypot(vx1, vy1)
+    norm2 = math.hypot(vx2, vy2)
+    
+    if norm1 == 0 or norm2 == 0:
+        return 0.0
+    
+    cos_theta = max(-1.0, min(1.0, dot / (norm1 * norm2)))
+    return math.acos(cos_theta)
+ 
 def circumradius(p1: Point, p2: Point, p3: Point) -> float:
     """
     Radius of the smallest circle that can contain three points.
