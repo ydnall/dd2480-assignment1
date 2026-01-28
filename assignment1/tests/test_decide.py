@@ -1,13 +1,12 @@
 import pytest
-
 from launch_interceptor_program.decide import decide
-
 from launch_interceptor_program.model import (
     Connector,
     DecisionInput,
     DecisionResult,
     Parameters,
 )
+
 
 def dummy_parameters() -> Parameters:
     """Minimal valid PARAMETERS object (values irrelevant for decide())."""
@@ -53,4 +52,4 @@ def test_decide():
 
     result = decide(inputs)
 
-    assert result.LAUNCH is "YES"
+    assert result.LAUNCH == "YES"
