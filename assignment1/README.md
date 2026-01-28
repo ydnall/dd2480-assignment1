@@ -9,7 +9,7 @@ The main mechanism of the LIC is the DECIDE()-function, which will output a laun
 - Python 3.10+
 
 ## Run program
-There are two supported ways to run the code. 
+There are two supported ways to run the code.
 First, you can use Docker from the repository root to build and run a containerized version of the project.
  ### 1. Quick start (Docker)
 ```
@@ -47,10 +47,10 @@ PYTHONPATH=src python -m pytest
 - Martin Zivojinovic: Made the solutions and ran tests for LIC 0, 1, 2; implemented PUM.
 
 ## Way of working (Essence self-assessment)
-- We structured the work using GitHub Issues and feature branches. Each Launch Interceptor Condition (LIC) was tracked as its own issue, and each member implemented their assigned LIC(s) on a separate branch linked to that issue. Changes were integrated through pull requests, which required other group members to review before merging into the main branch. 
+- We structured the work using GitHub Issues and feature branches. Each Launch Interceptor Condition (LIC) was tracked as its own issue, and each member implemented their assigned LIC(s) on a separate branch linked to that issue. Changes were integrated through pull requests, which required other group members to review before merging into the main branch.
 This helped keep the main branch clean and ensured that each merge represented a small, traceable change (an atomic commit). With the discussions and review history preserved in its corresponding PR.
 
 Right now, we consider our way of working to be “in place”: we delegate clear tasks from the start, and we integrate regularly through reviewed PRs. To move towards "working well', we can further work on consistency— especially making sure every change comes with concrete tests and that our checks run automatically on every PR. Our next step is to treat tests as part of “done” for each LIC PR and keep `main` buildable and testable at all times.
 
 ## License
-See `LICENSE`.
+See [LICENSE](../LICENSE).
