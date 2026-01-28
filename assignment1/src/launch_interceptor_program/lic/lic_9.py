@@ -18,8 +18,16 @@ def lic_9(points: list[Point], params: Parameters) -> bool:
     D_PTS = params.D_PTS
     EPSILON = params.EPSILON
 
-    if C_PTS < 1 or D_PTS < 1 or C_PTS + D_PTS > NUMPOINTS - 3:
-        return False
+    if not 1 <= C_PTS:
+        raise ValueError("C_PTS must be larger than or equal to 1")
+
+    if not 1 <= D_PTS:
+        raise ValueError("D_PTS must be larger than or equal to 1")
+
+    if not (C_PTS + D_PTS) <= (NUMPOINTS - 3):
+        raise ValueError(
+            "(C_PTS + D_PTS) must be less than or eqaul to (NUMPOINTS - 3)"
+        )
 
     for i in range(NUMPOINTS - C_PTS - D_PTS - 2):
         j = i + C_PTS + 1

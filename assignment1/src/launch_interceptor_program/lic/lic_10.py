@@ -15,8 +15,16 @@ def lic_10(points: list[Point], params: Parameters) -> bool:
     F_PTS = params.F_PTS
     AREA1 = params.AREA1
 
-    if E_PTS < 1 or F_PTS < 1 or E_PTS + F_PTS > NUMPOINTS - 3:
-        return False
+    if not 1 <= E_PTS:
+        raise ValueError("C_PTS must be larger than or equal to 1")
+
+    if not 1 <= F_PTS:
+        raise ValueError("D_PTS must be larger than or equal to 1")
+
+    if not (E_PTS + F_PTS) <= (NUMPOINTS - 3):
+        raise ValueError(
+            "(E_PTS + F_PTS) must be less than or eqaul to (NUMPOINTS - 3)"
+        )
 
     for i in range(NUMPOINTS - E_PTS - F_PTS - 2):
         j = i + E_PTS + 1

@@ -15,18 +15,23 @@ def lic_12(points: Points, parameters: Parameters) -> bool:
     if NUMPOINTS < 3:
         return False
 
-    k = parameters.K_PTS
+    K_PTS = parameters.K_PTS
+    LENGTH1 = parameters.LENGTH1
+    LENGTH2 = parameters.LENGTH2
+
+    if not 0 <= LENGTH2:
+        raise ValueError("LENGTH2 must be larger than or equal to 0")
 
     # flags for the lic 12 condition check
     found_greater = False
     found_less = False
 
-    for i in range(NUMPOINTS - k - 1):
-        dist = distance(points[i], points[i + k + 1])
+    for i in range(NUMPOINTS - K_PTS - 1):
+        dist = distance(points[i], points[i + K_PTS + 1])
 
-        if dist > parameters.LENGTH1:
+        if dist > LENGTH1:
             found_greater = True
-        if dist < parameters.LENGTH2:
+        if dist < LENGTH2:
             found_less = True
 
     return found_greater and found_less

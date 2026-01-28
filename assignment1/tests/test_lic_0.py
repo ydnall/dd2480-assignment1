@@ -67,3 +67,10 @@ def test_lic_0_no_points():
     points = []
     params = make_params(length1=1.0)
     assert lic_0(points, params) == False
+
+
+def test_lic_0_length1_zero_true():
+    """Should return true if LENGTH1 is within boundary"""
+    points = [(0, 0), (1, 0)]
+    params = make_params(length1=0.0)
+    assert lic_0(points, params) is True

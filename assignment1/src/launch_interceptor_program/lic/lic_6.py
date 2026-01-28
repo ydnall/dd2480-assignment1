@@ -7,8 +7,16 @@ def lic_6(points: Points, parameters: Parameters):
     N_PTS = parameters.N_PTS
     DIST = parameters.DIST
 
-    if NUMPOINTS < 3 or DIST < 0 or N_PTS < 3 or N_PTS > NUMPOINTS:
+    if NUMPOINTS < 3:
         return False
+
+    if not 3 <= N_PTS <= NUMPOINTS:
+        raise ValueError(
+            "N_PTS must be larger than or equal to 3 or less than or equal to NUMPOINTS"
+        )
+
+    if not 0 <= DIST:
+        raise ValueError("DIST must be larger than or equal to 0")
 
     for start_index in range(0, (NUMPOINTS - N_PTS) + 1):
         current_set = []

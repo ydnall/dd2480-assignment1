@@ -8,8 +8,13 @@ def lic_8(points: Points, parameters: Parameters):
     B_PTS = parameters.B_PTS
     RADIUS1 = parameters.RADIUS1
 
-    if NUMPOINTS < 5 or A_PTS < 1 or B_PTS < 1 or (B_PTS + A_PTS) > (NUMPOINTS - 3):
+    if NUMPOINTS < 5:
         return False
+
+    if not (A_PTS + B_PTS) <= (NUMPOINTS - 3):
+        raise ValueError(
+            "(A_PTS + B_PTS) must be less than or equal to (NUMPOINTS - 3)"
+        )
 
     for start_index in range(0, NUMPOINTS - A_PTS - B_PTS - 2):
         first_point = points[start_index]
