@@ -40,7 +40,7 @@ PYTHONPATH=src python -m pytest
 
 - Yiqin Lin: Made the solutions and ran tests for LIC 9, 10, 11; wrote README/documentation.
 
-- Emma Lindblom: Made the solutions and ran tests for LIC 6, 7, 8.
+- Emma Lindblom: Made the solutions and ran tests for LIC 6, 7, 8; organized group and kept track of grading criteria.
 
 - Andy Li: Made the solutions and ran tests for LIC 12, 13, 14; implemented CMV, __init__.py, and the top-level decide integration.
 
