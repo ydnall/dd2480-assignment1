@@ -36,15 +36,15 @@ PYTHONPATH=src python -m pytest
 ```
 
 ## Statement of contributions
-- Sumeya Yasir Isse: Made the solutions and ran tests for LIC 3, 4, 5; implemented FUV.
+- Sumeya Yasir Isse (sumeyayasir): Made the solutions and ran tests for LIC 3, 4, 5; implemented FUV.
 
-- Yiqin Lin: Made the solutions and ran tests for LIC 9, 10, 11; wrote README/documentation.
+- Yiqin Lin (potoqin): Made the solutions and ran tests for LIC 9, 10, 11; wrote README/documentation.
 
-- Emma Lindblom: Made the solutions and ran tests for LIC 6, 7, 8; organized group and kept track of grading criteria.
+- Emma Lindblom (emmalindblm): Made the solutions and ran tests for LIC 6, 7, 8; organized group and kept track of grading criteria.
 
-- Andy Li: Made the solutions and ran tests for LIC 12, 13, 14; implemented CMV, __init__.py, and the top-level decide integration.
+- Andy Li (ydnall): Made the solutions and ran tests for LIC 12, 13, 14; implemented CMV, __init__.py, and the top-level decide integration.
 
-- Martin Zivojinovic: Made the solutions and ran tests for LIC 0, 1, 2; implemented PUM.
+- Martin Zivojinovic (ZivoMartin): Made the solutions and ran tests for LIC 0, 1, 2; implemented PUM.
 
 ## Way of working (Essence self-assessment)
 - We structured the work using GitHub Issues and feature branches. Each Launch Interceptor Condition (LIC) was tracked as its own issue, and each member implemented their assigned LIC(s) on a separate branch linked to that issue. Changes were integrated through pull requests, which required other group members to review before merging into the main branch.
