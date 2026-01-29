@@ -31,12 +31,14 @@ def make_params(**overrides):
 
 
 def test_lic10_false_few_points():
+    """Returns False when there aren’t enough points to form a valid separated triple."""
     points = [(0.0, 0.0)] * 4
     params = make_params(E_PTS=1, F_PTS=1, AREA1=0.5)
     assert not lic_10(points, params)
 
 
 def test_lic10_true_large_area():
+    """Returns True when a separated triple forms a triangle with area > AREA1."""
     # With E_PTS=1, F_PTS=1, indices are (0,2,4) so we need at least 5 points
     points = [(0, 0), (999, 999), (1, 0), (999, 999), (0, 2)]
     params = make_params(E_PTS=1, F_PTS=1, AREA1=0.5)
@@ -44,6 +46,7 @@ def test_lic10_true_large_area():
 
 
 def test_lic10_false_small_area():
+    """Returns False when triangle area is too small to exceed AREA1"""
     points = [(0, 0), (999, 999), (1, 0), (999, 999), (0, 0.2)]
     params = make_params(E_PTS=1, F_PTS=1, AREA1=0.5)
     assert not lic_10(points, params)

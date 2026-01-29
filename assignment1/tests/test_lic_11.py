@@ -32,12 +32,14 @@ def make_params(**overrides):
 
 
 def test_lic11_false_too_few_points():
+    """Returns False when there aren’t enough points to form a valid separated pair."""
     points = [(0.0, 0.0), (1.0, 0.0)]
     params = make_params(G_PTS=1)
     assert not lic_11(points, params)
 
 
 def test_lic11_true_when_x_decreases():
+    """Returns True when there exists a separated pair where x decreases from i to j."""
     # i = 0 → (2, 0), j = 2 with G_PTS=1 → (-1, 0): x decreases (2 -> -1)
     points = [(2.0, 0.0), (0.0, 0.0), (-1.0, 0.0)]
     params = make_params(G_PTS=1)
@@ -45,6 +47,7 @@ def test_lic11_true_when_x_decreases():
 
 
 def test_lic11_false_when_x_does_not_decrease():
+    """Returns False when there is no separated pair where x decreases from i to j."""
     points = [(0.0, 0.0), (1.0, 0.0), (2.0, 0.0)]
     params = make_params(G_PTS=1)
     assert not lic_11(points, params)
