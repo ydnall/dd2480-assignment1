@@ -50,7 +50,7 @@ PYTHONPATH=src python -m pytest
 - We structured the work using GitHub Issues and feature branches. Each Launch Interceptor Condition (LIC) was tracked as its own issue, and each member implemented their assigned LIC(s) on a separate branch linked to that issue. Changes were integrated through pull requests, which required other group members to review before merging into the main branch.
 This helped keep the main branch clean and ensured that each merge represented a small, traceable change (an atomic commit). With the discussions and review history preserved in its corresponding PR.
 
-Right now, we consider our way of working to be “in place”: we delegate clear tasks from the start, and we integrate regularly through reviewed PRs. To move towards "working well', we can further work on consistency— especially making sure every change comes with concrete tests and that our checks run automatically on every PR. Our next step is to treat tests as part of “done” for each LIC PR and keep `main` buildable and testable at all times.
+Right now, we consider our way of working to be “Foundation Established”: we delegate clear tasks from the start, and we integrate regularly through reviewed PRs. However, since the project has only been running for a short time, it is not realistic to claim that the workflow is at higher states of way-of-working. To move towards higher states, our next step is to apply this workflow consistently for every change ie always work via an issue + branch, always open a PR with review, and treat tests/CI passing as part of “done” before merging.
 
 ## License
 See [LICENSE](../LICENSE).
